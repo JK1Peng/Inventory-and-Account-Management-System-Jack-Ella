@@ -1,0 +1,10 @@
+<INVENTORY> 
+ <PRODUCT> 
+  <stockNumber> 
+   45 
+  </stockNumber> 
+  <description> 
+   box 
+  </description> 
+ </PRODUCT> 
+</INVENTORY> 

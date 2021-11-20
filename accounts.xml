@@ -1,0 +1,13 @@
+<ACCOUNTS>
+   <CUSTOMER>
+          <id>12</id>
+          <Username>client</Username>
+          <Password>clientpass</Password>
+          <Profile>This is client</Profile>
+   </CUSTOMER>
+   <ADMINISTRATOR>
+         <id>20</id>
+         <Username>admin</Username>
+         <Password>adminpass</Password>
+   </ADMINISTRATOR>
+</ACCOUNTS>
