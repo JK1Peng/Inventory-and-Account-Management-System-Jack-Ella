@@ -17,8 +17,8 @@ public static HashMap<String,String> readFile(String filename){
    try( Scanner scanner = new Scanner(dataFile) ) {
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
-            String stockNumber;
-            String description;
+            String stockNumber = "";
+            String description = "";
             int separatorPosition = input.indexOf('<');
             int separatorPosition2 = input.indexOf('>');
             input = input.substring(separatorPosition + 1, separatorPosition2);
