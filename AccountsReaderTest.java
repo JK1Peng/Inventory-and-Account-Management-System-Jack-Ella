@@ -19,14 +19,14 @@ class AccountsReaderTest {
 			accounts.add(adminTest);
 			accounts.add(customerTest);
 			
-			assert customerTest.getID().equals(dataSet.get("12").getID());
-			assert customerTest.getPassword().equals(dataSet.get("12").getPassword());
-			assert customerTest.getUsername().equals(dataSet.get("12").getUsername());
-			assert customerTest.getProfile().equals(((CustomerAccount)dataSet.get("12")).getProfile());
+			assert customerTest.getID().equals(dataSet.get("10").getID());
+			assert customerTest.getPassword().equals(dataSet.get("10").getPassword());
+			assert customerTest.getUsername().equals(dataSet.get("10").getUsername());
+			assert customerTest.getProfile().equals(((CustomerAccount)dataSet.get("10")).getProfile());
 			
-			assert adminTest.getID().equals(dataSet.get("20").getID());
-			assert adminTest.getPassword().equals(dataSet.get("20").getPassword());
-			assert adminTest.getUsername().equals(dataSet.get("20").getUsername());
+			assert adminTest.getID().equals(dataSet.get("12").getID());
+			assert adminTest.getPassword().equals(dataSet.get("12").getPassword());
+			assert adminTest.getUsername().equals(dataSet.get("12").getUsername());
 		
 			
 	}
