@@ -207,11 +207,11 @@ public class StoreThread extends Thread {
 	}
 	
 	
-	public void getOrder(BufferedReader incoming) {
+	public static void getOrder(BufferedReader incoming) {
 		
 	}
 	
-	public void sendInventory(PrintWriter outgoing) {
+	public static void sendInventory(PrintWriter outgoing) {
 
 		
 	}
