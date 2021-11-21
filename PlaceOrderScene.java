@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 public class PlaceOrderScene extends SceneBasic {
 	private Button submitButton = new Button("Submit");
 	private Button cancelButton = new Button("Cancel");
+	private int customerId = 0;
 	private GridPane gridPane = new GridPane();
 	private Label oldText = new Label("Stock #");
 	private TextField oldField = new TextField();
@@ -52,6 +53,7 @@ public class PlaceOrderScene extends SceneBasic {
         root.getChildren().addAll(submitButton);
         root.getChildren().addAll(cancelButton);
         submitButton.setOnAction(e -> sendOrder());
+		
         cancelButton.setOnAction(e -> SceneManager.setCustomerScene());
         
 
@@ -106,6 +108,7 @@ public class PlaceOrderScene extends SceneBasic {
 
 	public void sendOrder() {
 		try {
+			customerId++;
 			String stockNum = oldField.getText();
 			String quantity = newField.getText();
 			Socket connection = SceneManager.getSocket(); // Server socket
@@ -113,6 +116,7 @@ public class PlaceOrderScene extends SceneBasic {
 			System.out.println("Sending... Orders");
 			outgoing.println("ORDERS");
 			outgoing.flush();
+			outgoing.println(customerId);
 			outgoing.println(stockNum);
 			outgoing.println(quantity);
 			outgoing.println("DONE");
