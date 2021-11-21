@@ -14,16 +14,14 @@ public static HashMap<String,String> readFile(String filename){
         System.out.println("No data file found.");
         System.exit(1);
     }
-     try( Scanner scanner = new Scanner(dataFile) ) {
+    try( Scanner scanner = new Scanner(dataFile) ) {
         String stockNumber = "";
             String description = "";
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
-            
             int separatorPosition = input.indexOf('<');
             int separatorPosition2 = input.indexOf('>');
             input = input.substring(separatorPosition + 1, separatorPosition2);
-            System.out.println(input);
             if(input.equals("stockNumber")){
                 String value = scanner.nextLine();
                 stockNumber = value.trim();
