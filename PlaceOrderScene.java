@@ -23,6 +23,10 @@ public class PlaceOrderScene extends SceneBasic {
 	private Button submitButton = new Button("Submit");
 	private Button cancelButton = new Button("Cancel");
 	private GridPane gridPane = new GridPane();
+	private Label oldText = new Label("Stock #");
+	private TextField oldField = new TextField();
+	private Label newText = new Label("Quantity");
+	private TextField newField = new TextField();
 	private final int FONT_SIZE = 20;
     public PrintWriter outgoing;
 
@@ -39,9 +43,9 @@ public class PlaceOrderScene extends SceneBasic {
         accountLabel.setFont(new Font(FONT_SIZE));
         gridPane.add(userLabel, 0, 0);
         gridPane.add(accountLabel, 1, 0);
+		
         gridPane.setAlignment(Pos.CENTER);
         root.getChildren().addAll(gridPane);
-
         int WIDTH = 200;
         cancelButton.setMinWidth(WIDTH);
         submitButton.setMinWidth(WIDTH);
@@ -68,19 +72,27 @@ public class PlaceOrderScene extends SceneBasic {
 	        System.out.println("Waiting for inventory..."); // For debugging
 	        String key = incoming.readLine();
             int row = 1; // Gridepane row index
-            while(key != null ){
+            while (!key.equals("DONE")) {
                 Label userLabel2 = new Label(key);
 	        	userLabel2.setFont(new Font(FONT_SIZE));
 	            gridPane.add(userLabel2, 0, row);
-
 	            // Add account type
 		        String value = incoming.readLine();
+				System.out.println(key);
+				System.out.println(value);
 	            Label accountLabel2 = new Label(value);
 	            accountLabel2.setFont(new Font(FONT_SIZE));
 	            gridPane.add(accountLabel2, 1, row);
                 key = incoming.readLine();
-                value = incoming.readLine();
+                row++;
+				
             }
+			row++;
+			gridPane.add(oldText, 0, row);
+			gridPane.add(oldField, 1, row);
+			row++;
+        gridPane.add(newText, 0,row);
+        gridPane.add(newField, 1, row);
         }
         
     catch (Exception e) {
@@ -94,36 +106,18 @@ public class PlaceOrderScene extends SceneBasic {
 
 	public void sendOrder() {
 		try {
+			String stockNum = oldField.getText();
+			String quantity = newField.getText();
 			Socket connection = SceneManager.getSocket(); // Server socket
 	    	PrintWriter outgoing = new PrintWriter( connection.getOutputStream() );
-			System.out.println("Sending... ACCOUNT_LIST");
-			outgoing.println("ACCOUNT_LIST");
+			System.out.println("Sending... Orders");
+			outgoing.println("ORDERS");
 			outgoing.flush();
-//			outgoing.close(); // CAUSES SOCKET TO CLOSE?
+			outgoing.println(stockNum);
+			outgoing.println(quantity);
+			outgoing.println("DONE");
+			outgoing.flush();
 
-	        BufferedReader incoming = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-	        System.out.println("Waiting for account list...");
-	        String username = incoming.readLine();
-	        int row = 1; // Gridepane row index
-	        while (!username.equals("DONE")) {
-	        	// Add username
-	        	Label userLabel2 = new Label(username);
-	        	userLabel2.setFont(new Font(FONT_SIZE));
-	            gridPane.add(userLabel2, 0, row);
-
-	            // Add account type
-		        String type = incoming.readLine();
-	            Label accountLabel2 = new Label(type);
-	            accountLabel2.setFont(new Font(FONT_SIZE));
-	            gridPane.add(accountLabel2, 1, row);
-
-	            // Start reading next account
-		        System.out.println("Received " + username + ", " + type); // For debugging
-		        row++;
-	            username = incoming.readLine();
-                SceneManager.setCustomerScene();
-	        }
-//	        incoming.close();
 		}
         catch (Exception e) {
             System.out.println("Error:  " + e);
