@@ -242,7 +242,7 @@ public class StoreThread extends Thread {
 		try {
 			HashMap<String,String>data;
 			data = InventoryReader.readFile("inventory.xml");
-			FileInputStream input = new FileInputStream(new File("BinaryT.data"));
+			FileInputStream input = new FileInputStream(new File("Binary.data"));
 			int id,stocknumber,quantity;	
 			while(true) {
 					id = input.read();

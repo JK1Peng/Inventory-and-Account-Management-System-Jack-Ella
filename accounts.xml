@@ -1,12 +1,12 @@
 <ACCOUNTS>
    <CUSTOMER>
-          <id>12</id>
+          <id>10</id>
           <Username>client</Username>
           <Password>clientpass</Password>
           <Profile>This is client</Profile>
    </CUSTOMER>
    <ADMINISTRATOR>
-         <id>20</id>
+         <id>12</id>
          <Username>admin</Username>
          <Password>adminpass</Password>
    </ADMINISTRATOR>
