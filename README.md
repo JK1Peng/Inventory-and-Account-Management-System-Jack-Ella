@@ -27,9 +27,6 @@ After this, the application will start and you'll see the login interface where 
 ## Contribution
 This project was majorly contributed by students, utilizing the structure and guidance provided by the professor. We encourage further contributions and feedback. If you encounter any issues or have suggestions, please raise them in the issues section of this repository.
 
-## License
-This project is open-source and free to use. Ensure to credit the original contributors when using or modifying this code.
-
-## Acknowledgements
-A special thanks to our professor for providing the structure and guidance throughout the development of this project and to all the students who contributed their valuable time and effort.
-
+## Created By
+- **Jack Peng**
+- **Ella Withington**
